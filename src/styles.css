@@ -5,17 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system definition.
- *
- * The @theme inline block maps CSS custom properties to Tailwind utility
- * classes (e.g. --color-primary -> bg-primary, text-primary).
- *
- * The :root and .dark blocks define the actual color values using oklch.
- * All colors MUST use oklch format.
- *
- * To add a new semantic color:
- * 1. Add the variable to :root (light value) and .dark (dark value)
- * 2. Register it in @theme inline as --color-<name>: var(--<name>)
+ * هوية «فهمني» — منصة تعليمية مصرية للأطفال.
+ * أزرق سماوي أساسي + أصفر وتركواز وبنفسجي كألوان مساعدة.
+ * كل الألوان بصيغة oklch ومسجلة في @theme inline.
  */
 
 @theme inline {
@@ -45,91 +37,88 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sun: var(--sun);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-mint: var(--mint);
+  --color-mint-foreground: var(--mint-foreground);
+  --color-grape: var(--grape);
+  --color-grape-foreground: var(--grape-foreground);
+  --color-sky-soft: var(--sky-soft);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 1rem;
+  /* خطوط */
+  --font-display: "Baloo Bhaijaan 2", "Cairo", sans-serif;
+  --font-body: "Cairo", "Tajawal", sans-serif;
+
+  /* ألوان النهار: خلفية كريمية دافئة مع أزرق سماوي أساسي */
+  --background: oklch(0.984 0.012 95);
+  --foreground: oklch(0.25 0.05 245);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.25 0.05 245);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.984 0.003 247.858);
-  --sidebar-foreground: oklch(0.129 0.042 264.695);
-  --sidebar-primary: oklch(0.208 0.042 265.755);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.968 0.007 247.896);
-  --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
-  --sidebar-border: oklch(0.929 0.013 255.508);
-  --sidebar-ring: oklch(0.704 0.04 256.788);
+  --popover-foreground: oklch(0.25 0.05 245);
+  --primary: oklch(0.62 0.14 234);
+  --primary-foreground: oklch(0.99 0.005 95);
+  --secondary: oklch(0.9 0.055 220);
+  --secondary-foreground: oklch(0.35 0.09 240);
+  --muted: oklch(0.94 0.02 220);
+  --muted-foreground: oklch(0.5 0.04 240);
+  --accent: oklch(0.86 0.14 88);
+  --accent-foreground: oklch(0.3 0.06 80);
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.9 0.03 230);
+  --input: oklch(0.92 0.025 230);
+  --ring: oklch(0.68 0.13 230);
+
+  /* ألوان مساعدة للهوية */
+  --sun: oklch(0.85 0.15 88);
+  --sun-foreground: oklch(0.3 0.07 75);
+  --mint: oklch(0.78 0.12 190);
+  --mint-foreground: oklch(0.25 0.05 200);
+  --grape: oklch(0.55 0.17 300);
+  --grape-foreground: oklch(0.98 0.01 300);
+  --sky-soft: oklch(0.93 0.045 225);
+
+  --chart-1: oklch(0.62 0.14 234);
+  --chart-2: oklch(0.85 0.15 88);
+  --chart-3: oklch(0.78 0.12 190);
+  --chart-4: oklch(0.55 0.17 300);
+  --chart-5: oklch(0.65 0.18 30);
 }
 
 .dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
+  --background: oklch(0.2 0.04 250);
+  --foreground: oklch(0.96 0.01 230);
+  --card: oklch(0.25 0.045 250);
+  --card-foreground: oklch(0.96 0.01 230);
+  --popover: oklch(0.25 0.045 250);
+  --popover-foreground: oklch(0.96 0.01 230);
+  --primary: oklch(0.72 0.13 230);
+  --primary-foreground: oklch(0.2 0.04 250);
+  --secondary: oklch(0.32 0.05 245);
+  --secondary-foreground: oklch(0.96 0.01 230);
+  --muted: oklch(0.32 0.05 245);
+  --muted-foreground: oklch(0.72 0.03 235);
+  --accent: oklch(0.75 0.13 90);
+  --accent-foreground: oklch(0.2 0.04 250);
+  --destructive: oklch(0.65 0.2 25);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: oklch(0.7 0.12 230);
+
+  --sun: oklch(0.8 0.14 88);
+  --sun-foreground: oklch(0.22 0.05 80);
+  --mint: oklch(0.72 0.11 190);
+  --mint-foreground: oklch(0.2 0.04 220);
+  --grape: oklch(0.65 0.16 300);
+  --grape-foreground: oklch(0.98 0.01 300);
+  --sky-soft: oklch(0.3 0.05 240);
 }
 
 @layer base {
@@ -137,8 +126,51 @@
     border-color: var(--color-border);
   }
 
+  html {
+    font-family: var(--font-body);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
+    -webkit-tap-highlight-color: transparent;
   }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+  }
+}
+
+/* حركات لطيفة للأطفال */
+@keyframes fahmany-pop {
+  0% { transform: scale(0.85); opacity: 0; }
+  70% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes fahmany-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes fahmany-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-3deg); }
+  75% { transform: rotate(3deg); }
+}
+
+@utility animate-pop {
+  animation: fahmany-pop 0.35s ease-out both;
+}
+@utility animate-float {
+  animation: fahmany-float 3s ease-in-out infinite;
+}
+@utility animate-wiggle {
+  animation: fahmany-wiggle 0.6s ease-in-out;
+}
+
+@utility card-playful {
+  border-radius: var(--radius-2xl);
+  background-color: var(--color-card);
+  border: 2px solid var(--color-border);
+  box-shadow: 0 6px 0 0 var(--color-sky-soft);
 }
