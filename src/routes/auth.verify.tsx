@@ -5,8 +5,8 @@ import { maskPhone } from "@/lib/phone";
 import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/auth/verify")({
-  validateSearch: (search) => ({
-    phone: typeof search.phone === "string" ? search.phone : "",
+  validateSearch: (search: Record<string, unknown>): { phone: string } => ({
+    phone: typeof search["phone"] === "string" ? search["phone"] : "",
   }),
   component: VerifyOtpPage,
 });
