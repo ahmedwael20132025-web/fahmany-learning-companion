@@ -113,8 +113,14 @@ function HomePage() {
 
   const markProgress = useMutation({
     mutationFn: async (lessonId: string) => {
+      const { data: userData } = await supabase.auth.getUser();
       await supabase.from("student_progress").upsert(
-        { lesson_id: lessonId, status: "أكمله", last_activity_at: new Date().toISOString() },
+        {
+          student_id: userData.user!.id,
+          lesson_id: lessonId,
+          status: "أكمله",
+          last_activity_at: new Date().toISOString(),
+        },
         { onConflict: "student_id,lesson_id" },
       );
     },
@@ -126,16 +132,27 @@ function HomePage() {
 
   const submitQuiz = useMutation({
     mutationFn: async ({ lessonId, score, total, details }: { lessonId: string; score: number; total: number; details: Record<string, string> }) => {
-      await supabase.from("quiz_attempts").insert({ lesson_id: lessonId, score, total, details });
+      const { data: userData } = await supabase.auth.getUser();
+      const studentId = userData.user!.id;
+      await supabase.from("quiz_attempts").insert({
+        student_id: studentId,
+        lesson_id: lessonId,
+        score,
+        total,
+        details,
+      });
       if (total > 0 && score === total) {
-        await supabase
-          .from("student_achievements")
-          .upsert(
-            {
-              achievement_id: (await supabase.from("achievements").select("id").eq("key", "perfect_score").single()).data!.id,
-            },
+        const { data: ach } = await supabase
+          .from("achievements")
+          .select("id")
+          .eq("key", "perfect_score")
+          .single();
+        if (ach) {
+          await supabase.from("student_achievements").upsert(
+            { student_id: studentId, achievement_id: ach.id },
             { onConflict: "student_id,achievement_id" },
           );
+        }
       }
     },
     onSuccess: () => toast.success("اتسجّلت نتيجتك! 🌟"),

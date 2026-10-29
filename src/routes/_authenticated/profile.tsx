@@ -34,18 +34,17 @@ function ProfilePage() {
   const achievementsQuery = useQuery({
     queryKey: ["my-achievements"],
     queryFn: async () => {
-      const { data, error } = await supabase
+      const { data: userData } = await supabase.auth.getUser();
+      const { data: mine } = await supabase
         .from("student_achievements")
         .select("achievement_id")
-        .then(async ({ data: mine }) => {
-          if (!mine?.length) return [] as AchievementRow[];
-          const { data: achs } = await supabase
-            .from("achievements")
-            .select("emoji, title, description")
-            .in("id", mine.map((m) => m.achievement_id));
-          return (achs ?? []) as AchievementRow[];
-        });
-      return data;
+        .eq("student_id", userData.user!.id);
+      if (!mine?.length) return [] as AchievementRow[];
+      const { data: achs } = await supabase
+        .from("achievements")
+        .select("emoji, title, description")
+        .in("id", mine.map((m) => m.achievement_id));
+      return (achs ?? []) as AchievementRow[];
     },
   });
 
