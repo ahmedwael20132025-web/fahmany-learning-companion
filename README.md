@@ -1,4 +1,4 @@
-# Fahmany Learning Companion
+8# Fahmany Learning Companion
 
 Help me build an AI-powered app using Lovable AI.
 
@@ -1037,20 +1037,6 @@ MASTER PROJECT PROMPT — FAHMANI | فهمني
 
 
 الهدف النهائي: إطلاق منصة «فهمني» كمنتج تعليمي مصري آمن، ممتع، احترافي، قابل للتطوير، ويساعد الطلاب على الفهم الحقيقي وليس مجرد حفظ الإجابات.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5a80ab09-7e8e-4f7e-839d-c54350750bd1).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
 git clone <this-repository-url>
